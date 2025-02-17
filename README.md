@@ -1,4 +1,4 @@
-# [WEB BLE UI](https://github.com/DmitryGubkin/WebBLE_PhotoStereo_UI) Photometric Stereo
+# [WEB BLE UI](https://dmitrygubkin.github.io/WebBLE_PhotoStereo_UI/) Photometric Stereo
 >[!IMPORTANT]
 >### Required
 >* [Node.js](https://nodejs.org/en)
