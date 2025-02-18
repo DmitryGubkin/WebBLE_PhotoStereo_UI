@@ -1,34 +1,31 @@
-name: Deploy GitHub Pages
+name: deploy to gh-pages
 on:
   push:
     branches:
-      - main
       - master
-
+      - main
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Install Node.js
+    steps:
+      - name: 🛎️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Install dependencies
-        run: npm run install
+      - name: 📥 Install dependencies
+        run: npm install
 
-      - name: Build project
+      - name: 🏗️ Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: 🚀Deploy to GitHub Pages🚀  // --> this deploys to gh-pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
