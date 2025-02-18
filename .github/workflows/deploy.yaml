@@ -20,11 +20,15 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install
+        run: npm run install
 
       - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 
